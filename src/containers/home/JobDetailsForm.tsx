@@ -7,7 +7,11 @@ import FormInput from "../../components/formComponents/FormInput";
 import { IJobDetails } from "../../interface/forms";
 import { useData } from "./DataProvider";
 
-const JobDetailsForm: React.FC = ({setCurrentTab}: any) => {
+interface JobDetailsFormProps {
+  setCurrentTab: (index: number) => void;
+}
+
+const JobDetailsForm: React.FC<JobDetailsFormProps> = ({setCurrentTab}: any) => {
 
   const { setState, state }: any = useData();
 

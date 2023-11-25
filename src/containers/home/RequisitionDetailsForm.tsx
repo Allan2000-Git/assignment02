@@ -9,7 +9,11 @@ import { IRequisitionDetails } from "../../interface/forms";
 import { genderOptions, urgencyOptions } from "./constants";
 import { useData } from "./DataProvider";
 
-const RequisitionDetailsForm: React.FC = ({setCurrentTab}: any) => {
+interface RequisitionFormProps {
+  setCurrentTab: (index: number) => void;
+}
+
+const RequisitionDetailsForm: React.FC<RequisitionFormProps> = ({setCurrentTab}: any) => {
 
   const { setState, state }: any = useData();
 

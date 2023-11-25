@@ -11,7 +11,11 @@ import {
 } from "./constants";
 import { useData } from "./DataProvider";
 
-const InterviewDetailsForm: React.FC = ({setCurrentTab}:any) => {
+interface InterviewDetailsFormProps {
+  setCurrentTab: (index: number) => void;
+}
+
+const InterviewDetailsForm: React.FC<InterviewDetailsFormProps> = ({setCurrentTab}:any) => {
   const { setState, state }: any = useData();
 
   const changeState = () =>{
