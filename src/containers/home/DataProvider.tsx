@@ -37,7 +37,27 @@ const DataProvider: React.FC<{ children: React.ReactNode }> = ({
 };
 
 export const useData = () => {
-  return useContext(DataContext);
+  return useContext(DataContext) as {
+    state: {
+      requisitionDetails: {
+        gender: string;
+        noOfOpenings: number;
+        requisitionTitle: string;
+        urgency: string;
+      };
+      jobDetails: {
+        jobDetails: string;
+        jobLocation: string;
+        jobTitle: string;
+      };
+      interviewSettings: {
+        interviewDuration: string;
+        interviewLanguage: string;
+        interviewMode: string;
+      };
+    };
+    setState: React.Dispatch<React.SetStateAction<typeof initialValues>>;
+  };
 };
 
 export default DataProvider;
