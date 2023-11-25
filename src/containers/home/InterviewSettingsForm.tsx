@@ -1,6 +1,7 @@
 import { Button, Flex, Box } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import FormSelect from "../../components/formComponents/FormSelect";
 import { IInterViewSettings } from "../../interface/forms";
@@ -14,6 +15,7 @@ import { useData } from "./DataProvider";
 interface InterviewDetailsFormProps {
   setCurrentTab: (index: number) => void;
 }
+
 
 const InterviewDetailsForm: React.FC<InterviewDetailsFormProps> = ({setCurrentTab}:any) => {
   const { setState, state }: any = useData();
@@ -38,6 +40,11 @@ const InterviewDetailsForm: React.FC<InterviewDetailsFormProps> = ({setCurrentTa
       interviewDuration: "",
       interviewLanguage: "",
     },
+    validationSchema: Yup.object().shape({
+      interviewMode: Yup.string().required("Interview Mode is required"),
+      interviewDuration: Yup.string().required("Interview Duration is required"),
+      interviewLanguage: Yup.string().required("Interview Language is required"),
+    }),
     onSubmit: (values) => {
       changeState()
       alert("Form successfully submitted");
